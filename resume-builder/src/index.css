@@ -13,5 +13,6 @@ span {
 }
 
 :root {
-  --main-color: rgb(141, 43, 233);
+  --main-color: #50bc44;
+  --hover-main-color: #43a438;
 }
