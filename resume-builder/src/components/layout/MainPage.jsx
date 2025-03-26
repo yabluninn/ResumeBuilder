@@ -5,7 +5,7 @@ import { useState } from "react";
 import ResumeWelcome from "./ResumeWelcome";
 
 export default function MainPage() {
-  const [isWelcome, setIsWelcome] = useState(true);
+  const [isWelcome, setIsWelcome] = useState(false);
 
   return (
     <div className="page-container">

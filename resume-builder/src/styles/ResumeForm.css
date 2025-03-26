@@ -3,10 +3,19 @@
   height: 85%;
   background-color: white;
   border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.form-header {
+.form-section {
   width: 100%;
-  height: 50px;
-  border-bottom: 1px solid #eee;
+  height: 95%;
+}
+
+.form-footer {
+  width: 100%;
+  height: 5%;
+  border: 1px solid red;
 }
