@@ -13,6 +13,14 @@
   align-items: center;
 }
 
+.section-form-container {
+  width: 100%;
+  height: calc(100% - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .section-title {
   font-weight: 500;
   font-size: 22px;
@@ -51,4 +59,16 @@
 
 .section-back-button:hover {
   background-color: #f1f1f1;
+}
+
+.section-form {
+  width: 70%;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
 }
