@@ -1,8 +1,9 @@
 .page-container {
   width: 100%;
-  height: calc(100% - 60px);
+  height: fit-content;
+  min-height: calc(100% - 60px);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   padding: 0px 244px;
 }

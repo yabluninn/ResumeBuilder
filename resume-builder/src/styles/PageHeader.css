@@ -1,0 +1,15 @@
+.page-header {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+.page-step-title {
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--main-color);
+}

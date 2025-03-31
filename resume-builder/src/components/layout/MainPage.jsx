@@ -1,15 +1,14 @@
-import ResumeForm from "./ResumeForm";
-
 import "../../styles/MainPage.css";
-import { useState } from "react";
-import ResumeWelcome from "./ResumeWelcome";
+import PageHeader from "./PageHeader";
+// import { useState } from "react";
 
 export default function MainPage() {
-  const [isWelcome, setIsWelcome] = useState(false);
+  // const [isWelcome, setIsWelcome] = useState(false);
 
   return (
     <div className="page-container">
-      {isWelcome ? <ResumeWelcome /> : <ResumeForm />}
+      <PageHeader />
+      {/* {isWelcome ? <ResumeWelcome /> : <ResumeForm />} */}
     </div>
   );
 }
