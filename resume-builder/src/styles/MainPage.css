@@ -3,7 +3,10 @@
   height: fit-content;
   min-height: calc(100% - 60px);
   display: flex;
-  justify-content: center;
-  align-items: start;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
   padding: 0px 244px;
+  background-color: rgb(246, 246, 246);
 }
