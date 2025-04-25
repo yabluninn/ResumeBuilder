@@ -1,6 +1,7 @@
 import SectionInput from "../../ui/SectionInput";
 import SectionDropdown from "../../ui/SectionDropdown";
 import { useState } from "react";
+import SectionHeader from "../../ui/SectionHeader";
 
 export default function EducationSection() {
   const [educationLevel, setEducationLevel] = useState("");
@@ -17,9 +18,7 @@ export default function EducationSection() {
 
   return (
     <form className="section">
-      <div className="section-header">
-        <p className="section-title">Education</p>
-      </div>
+      <SectionHeader title={"Education"} />
       <div className="section-inputs">
         <div className="section-inputs-container">
           <SectionInput
@@ -61,11 +60,11 @@ export default function EducationSection() {
         </div>
       </div>
       <div className="section-buttons">
-        <button className="section-button back-button" type="submit">
+        <button className="section-button back-button">
           <i class="fa-solid fa-chevron-left"></i>
           Back
         </button>
-        <button className="section-button next-button" type="submit">
+        <button className="section-button next-button">
           Next Step
           <i class="fa-solid fa-chevron-right"></i>
         </button>

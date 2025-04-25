@@ -6,7 +6,7 @@ import EducationSection from "./EducationSection";
 export default function SectionForm() {
   return (
     <div className="section-form">
-      <EducationSection />
+      <PersonalSection />
     </div>
   );
 }
