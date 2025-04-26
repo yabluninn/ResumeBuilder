@@ -3,7 +3,7 @@ import SectionHeader from "../../ui/SectionHeader";
 
 export default function PersonalSection() {
   return (
-    <form className="section">
+    <div className="section">
       <SectionHeader title={"Personal Information"} />
       <div className="section-inputs">
         <div className="section-inputs-container">
@@ -68,6 +68,6 @@ export default function PersonalSection() {
         Next Step
         <i class="fa-solid fa-chevron-right"></i>
       </button>
-    </form>
+    </div>
   );
 }

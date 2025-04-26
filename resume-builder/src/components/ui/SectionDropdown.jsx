@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-const SectionDropdown = ({ value, onChange, title, options }) => {
+const SectionDropdown = ({ value, onChange, title, options, placeholder }) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef();
 
@@ -31,7 +31,7 @@ const SectionDropdown = ({ value, onChange, title, options }) => {
         style={{ position: "relative", cursor: "pointer", userSelect: "none" }}
         onClick={() => setOpen(!open)}
       >
-        {current ? current.label : "Select education level"}
+        {current ? current.label : placeholder}
         <span style={{ float: "right" }}>▾</span>
 
         {open && (

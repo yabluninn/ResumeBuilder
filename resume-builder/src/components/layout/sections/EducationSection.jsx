@@ -17,7 +17,7 @@ export default function EducationSection() {
   ];
 
   return (
-    <form className="section">
+    <div className="section">
       <SectionHeader title={"Education"} />
       <div className="section-inputs">
         <div className="section-inputs-container">
@@ -53,6 +53,7 @@ export default function EducationSection() {
           />
           <SectionDropdown
             title={"Education Level"}
+            placeholder={"Select education level"}
             value={educationLevel}
             onChange={setEducationLevel}
             options={levelOptions}
@@ -69,6 +70,6 @@ export default function EducationSection() {
           <i class="fa-solid fa-chevron-right"></i>
         </button>
       </div>
-    </form>
+    </div>
   );
 }
