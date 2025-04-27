@@ -1,8 +1,8 @@
-import SectionInput from "../../ui/SectionInput";
-import SectionDropdown from "../../ui/SectionDropdown";
+import SectionInput from "../../../ui/SectionInput";
+import SectionDropdown from "../../../ui/SectionDropdown";
 import { useState } from "react";
-import SectionHeader from "../../ui/SectionHeader";
-import SkillItem from "./skills/SkillItem";
+import SectionHeader from "../../../ui/SectionHeader";
+import SkillItem from "./SkillItem";
 
 export default function SkillsSection() {
   const [skillLevel, setSkillLevel] = useState("");

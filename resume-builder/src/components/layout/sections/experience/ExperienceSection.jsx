@@ -1,9 +1,9 @@
-import SectionInput from "../../ui/SectionInput";
-import SectionHeader from "../../ui/SectionHeader";
-import SectionDropdown from "../../ui/SectionDropdown";
+import SectionInput from "../../../ui/SectionInput";
+import SectionHeader from "../../../ui/SectionHeader";
+import SectionDropdown from "../../../ui/SectionDropdown";
 import { useState } from "react";
-import ExperienceBlock from "./experience/ExperienceBlock";
-import ExperienceItem from "./experience/ExperienceItem";
+import ExperienceBlock from "./ExperienceBlock";
+import ExperienceItem from "./ExperienceItem";
 
 export default function ExperienceSection() {
   const [location, setLocation] = useState("");
