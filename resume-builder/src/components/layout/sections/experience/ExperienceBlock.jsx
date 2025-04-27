@@ -1,5 +1,5 @@
-import SectionInput from "../../ui/SectionInput";
-import SectionDropdown from "../../ui/SectionDropdown";
+import SectionInput from "../../../ui/SectionInput";
+import SectionDropdown from "../../../ui/SectionDropdown";
 
 export default function ExperienceBlock({
   location,
@@ -47,9 +47,9 @@ export default function ExperienceBlock({
           options={locationOptions}
         />
       </div>
-      <div className="exp-block-footer">
+      {/* <div className="exp-block-footer">
         <button>Remove</button>
-      </div>
+      </div> */}
     </div>
   );
 }

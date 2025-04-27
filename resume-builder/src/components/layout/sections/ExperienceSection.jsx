@@ -2,7 +2,8 @@ import SectionInput from "../../ui/SectionInput";
 import SectionHeader from "../../ui/SectionHeader";
 import SectionDropdown from "../../ui/SectionDropdown";
 import { useState } from "react";
-import ExperienceBlock from "./ExperienceBlock";
+import ExperienceBlock from "./experience/ExperienceBlock";
+import ExperienceItem from "./experience/ExperienceItem";
 
 export default function ExperienceSection() {
   const [location, setLocation] = useState("");
@@ -17,6 +18,17 @@ export default function ExperienceSection() {
     <div className="section">
       <SectionHeader title={"Experience"} />
       <div className="experience-blocks">
+        <div className="experience-list">
+          <ExperienceItem
+            experience={{
+              title: "FullStack Developer (React)",
+              companyName: "Stuxlut",
+              startDate: "13 Jan 2024",
+              endDate: "27 Apr 2025",
+              location: "Remote",
+            }}
+          />
+        </div>
         <ExperienceBlock
           location={location}
           setLocation={setLocation}
