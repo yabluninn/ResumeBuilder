@@ -2,7 +2,7 @@ import { useState } from "react";
 import SectionHeader from "../../../ui/SectionHeader";
 import SectionDropdown from "../../../ui/SectionDropdown";
 import SectionInput from "../../../ui/SectionInput";
-import SkillItem from "../skills/SkillItem";
+import SectionTextarea from "../../../ui/SectionTextarea";
 import LanguageItem from "./LanguageItem";
 import SectionItem from "../SectionItem";
 import CertificateItem from "./CertificateItem";
@@ -106,7 +106,14 @@ export default function AdditionalSection() {
         </div>
       </SectionItem>
       <SectionItem title="Hobbies">
-        <textarea name="" id=""></textarea>
+        <div className="section-inputs">
+          <SectionTextarea
+            id="hobbies"
+            title="Write something about your hobbies"
+            placeholder="My hobbies are..."
+            isRequired={false}
+          />
+        </div>
       </SectionItem>
       <div className="section-buttons">
         <button className="section-button back-button">

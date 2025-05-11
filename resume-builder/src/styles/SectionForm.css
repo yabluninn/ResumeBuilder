@@ -74,6 +74,16 @@
   transition: border 0.3s;
 }
 
+.section-textarea {
+  width: 100%;
+  min-height: 55px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  padding: 16px;
+  resize: vertical;
+  transition: border 0.3s;
+}
+
 .section-dropdown {
   display: flex;
   justify-content: space-between;
@@ -86,7 +96,14 @@
   border: 2px solid var(--main-color);
 }
 
-.section-input::placeholder {
+.section-textarea:hover,
+.section-textarea:focus {
+  outline: none;
+  border: 2px solid var(--main-color);
+}
+
+.section-input::placeholder,
+.section-textarea::placeholder {
   color: #ccc;
 }
 
