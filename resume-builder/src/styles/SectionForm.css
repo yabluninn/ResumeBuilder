@@ -337,7 +337,6 @@
 
 .skill-name {
   font-size: 18px;
-  font-weight: bold;
 }
 
 .skill-item-info i {
@@ -358,4 +357,17 @@
   align-items: center;
   flex-direction: row;
   gap: 16px;
+}
+
+.section-item {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+.section-item-title {
+  font-size: 18px;
+  font-weight: bold;
 }
