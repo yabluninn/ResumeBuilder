@@ -10,7 +10,13 @@ const initialState = {
     salary: 0,
     location: "",
   },
-  education: [],
+  educationInfo: {
+    institution: "",
+    study: "",
+    startDate: "",
+    endDate: "",
+    level: "",
+  },
   experience: [],
   skills: [],
   additions: {
@@ -28,8 +34,13 @@ const resumeSlice = createSlice({
       const { field, value } = action.payload;
       state.personalInfo[field] = value;
     },
+    updateEducationField: (state, action) => {
+      const { field, value } = action.payload;
+      state.educationInfo[field] = value;
+    },
   },
 });
 
-export const { updatePersonalField } = resumeSlice.actions;
+export const { updatePersonalField, updateEducationField } =
+  resumeSlice.actions;
 export default resumeSlice.reducer;

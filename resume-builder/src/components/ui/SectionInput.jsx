@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { updatePersonalField } from "../../store/resumeSlice";
+import {
+  updatePersonalField,
+  updateEducationField,
+} from "../../store/resumeSlice";
 
 export default function SectionInput({
   id,
@@ -7,12 +10,26 @@ export default function SectionInput({
   placeholder,
   isRequired,
   type,
+  slice = "personal",
 }) {
   const dispatch = useDispatch();
-  const value = useSelector((state) => state.resume.personalInfo[id] || "");
+  const value = useSelector((state) =>
+    slice === "personal"
+      ? state.resume.personalInfo[id]
+      : state.resume.educationInfo[id]
+  );
 
   const handleChange = (e) => {
-    dispatch(updatePersonalField({ field: id, value: e.target.value }));
+    const action = {
+      field: id,
+      value: e.target.value,
+    };
+
+    if (slice === "personal") {
+      dispatch(updatePersonalField(action));
+    } else {
+      dispatch(updateEducationField(action));
+    }
   };
 
   return (

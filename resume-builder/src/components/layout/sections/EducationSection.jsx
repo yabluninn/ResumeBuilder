@@ -1,10 +1,32 @@
 import SectionInput from "../../ui/SectionInput";
 import SectionDropdown from "../../ui/SectionDropdown";
-import { useState } from "react";
 import SectionHeader from "../../ui/SectionHeader";
 
+import { useDispatch, useSelector } from "react-redux";
+import { updateEducationField } from "../../../store/resumeSlice";
+
 export default function EducationSection({ onNext, onBack }) {
-  const [educationLevel, setEducationLevel] = useState("");
+  const dispatch = useDispatch();
+  const educationLevel = useSelector(
+    (state) => state.resume.educationInfo.level
+  );
+
+  const educationInfo = useSelector((state) => state.resume.educationInfo);
+
+  const handleNext = () => {
+    const { institution, study, startDate, endDate, level } = educationInfo;
+
+    if (!institution || !study || !startDate || !endDate || !level) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    onNext();
+  };
+
+  const handleChange = (value) => {
+    dispatch(updateEducationField({ field: "level", value }));
+  };
 
   const levelOptions = [
     { value: "highschool", label: "High School Diploma" },
@@ -27,6 +49,7 @@ export default function EducationSection({ onNext, onBack }) {
             placeholder={"Enter institution"}
             isRequired={true}
             type={"text"}
+            slice="education"
           />
           <SectionInput
             id={"study"}
@@ -34,28 +57,31 @@ export default function EducationSection({ onNext, onBack }) {
             placeholder={"Enter field of study"}
             isRequired={true}
             type={"text"}
+            slice="education"
           />
         </div>
         <div className="section-inputs-container">
           <SectionInput
-            id={"start-date"}
+            id={"startDate"}
             title={"Start Date"}
             placeholder={""}
             isRequired={true}
             type={"date"}
+            slice="education"
           />
           <SectionInput
-            id={"end-date"}
+            id={"endDate"}
             title={"End Date"}
             placeholder={""}
             isRequired={true}
             type={"date"}
+            slice="education"
           />
           <SectionDropdown
             title={"Education Level"}
             placeholder={"Select education level"}
             value={educationLevel}
-            onChange={setEducationLevel}
+            onChange={handleChange}
             options={levelOptions}
           />
         </div>
@@ -65,7 +91,7 @@ export default function EducationSection({ onNext, onBack }) {
           <i class="fa-solid fa-chevron-left"></i>
           Back
         </button>
-        <button className="section-button next-button" onClick={onNext}>
+        <button className="section-button next-button" onClick={handleNext}>
           Next Step
           <i class="fa-solid fa-chevron-right"></i>
         </button>
