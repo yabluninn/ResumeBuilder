@@ -3,7 +3,7 @@ import SectionDropdown from "../../ui/SectionDropdown";
 import { useState } from "react";
 import SectionHeader from "../../ui/SectionHeader";
 
-export default function EducationSection() {
+export default function EducationSection({ onNext, onBack }) {
   const [educationLevel, setEducationLevel] = useState("");
 
   const levelOptions = [
@@ -61,11 +61,11 @@ export default function EducationSection() {
         </div>
       </div>
       <div className="section-buttons">
-        <button className="section-button back-button">
+        <button className="section-button back-button" onClick={onBack}>
           <i class="fa-solid fa-chevron-left"></i>
           Back
         </button>
-        <button className="section-button next-button">
+        <button className="section-button next-button" onClick={onNext}>
           Next Step
           <i class="fa-solid fa-chevron-right"></i>
         </button>

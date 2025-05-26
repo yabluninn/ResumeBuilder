@@ -1,7 +1,21 @@
 import SectionInput from "../../ui/SectionInput";
 import SectionHeader from "../../ui/SectionHeader";
+import { useSelector } from "react-redux";
 
-export default function PersonalSection() {
+export default function PersonalSection({ onNext }) {
+  const personalInfo = useSelector((state) => state.resume.personalInfo);
+
+  const handleNext = () => {
+    const { name, surname, mail, phone } = personalInfo;
+
+    if (!name || !surname || !mail || !phone) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    onNext();
+  };
+
   return (
     <div className="section">
       <SectionHeader title={"Personal Information"} />
@@ -64,7 +78,7 @@ export default function PersonalSection() {
           />
         </div>
       </div>
-      <button className="section-button next-button">
+      <button className="section-button next-button" onClick={handleNext}>
         Next Step
         <i className="fa-solid fa-chevron-right"></i>
       </button>
