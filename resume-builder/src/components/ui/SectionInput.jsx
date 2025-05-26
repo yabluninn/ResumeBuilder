@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
+import { updatePersonalField } from "../../store/resumeSlice";
+
 export default function SectionInput({
   id,
   title,
@@ -5,11 +8,18 @@ export default function SectionInput({
   isRequired,
   type,
 }) {
+  const dispatch = useDispatch();
+  const value = useSelector((state) => state.resume.personalInfo[id] || "");
+
+  const handleChange = (e) => {
+    dispatch(updatePersonalField({ field: id, value: e.target.value }));
+  };
+
   return (
     <div className="section-input-block">
       <label htmlFor={id} className="section-input-label">
         {title + " "}
-        {isRequired ? " *" : ""}
+        {isRequired ? "*" : ""}
       </label>
       <input
         type={type}
@@ -17,7 +27,9 @@ export default function SectionInput({
         name={id}
         className="section-input"
         placeholder={placeholder}
-        required
+        required={isRequired}
+        value={value}
+        onChange={handleChange}
       />
     </div>
   );
