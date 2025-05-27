@@ -38,9 +38,20 @@ const resumeSlice = createSlice({
       const { field, value } = action.payload;
       state.educationInfo[field] = value;
     },
+    addExperience: (state, action) => {
+      state.experience.push(action.payload);
+    },
+    removeExperience: (state, action) => {
+      const index = action.payload;
+      state.experience = state.experience.filter((_, i) => i !== index);
+    },
   },
 });
 
-export const { updatePersonalField, updateEducationField } =
-  resumeSlice.actions;
+export const {
+  updatePersonalField,
+  updateEducationField,
+  addExperience,
+  removeExperience,
+} = resumeSlice.actions;
 export default resumeSlice.reducer;

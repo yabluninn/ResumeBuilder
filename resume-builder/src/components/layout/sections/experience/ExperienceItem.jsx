@@ -1,4 +1,4 @@
-export default function ExperienceItem({ experience }) {
+export default function ExperienceItem({ experience, onDelete }) {
   return (
     <div className="exp-item">
       <div className="exp-main-info-block">
@@ -23,7 +23,7 @@ export default function ExperienceItem({ experience }) {
         <i className="fa-solid fa-location-dot"></i>
         <p>{experience.location}</p>
       </div>
-      <button className="exp-remove-button">
+      <button className="exp-remove-button" onClick={onDelete}>
         <i className="fa-solid fa-trash-can"></i>
       </button>
     </div>

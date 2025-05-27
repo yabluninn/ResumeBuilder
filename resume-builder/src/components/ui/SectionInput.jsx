@@ -11,32 +11,36 @@ export default function SectionInput({
   isRequired,
   type,
   slice = "personal",
+  value,
+  onChange,
 }) {
   const dispatch = useDispatch();
-  const value = useSelector((state) =>
-    slice === "personal"
-      ? state.resume.personalInfo[id]
-      : state.resume.educationInfo[id]
-  );
+
+  const reduxValue = useSelector((state) => {
+    if (slice === "personal") return state.resume.personalInfo[id] ?? "";
+    if (slice === "education") return state.resume.educationInfo[id] ?? "";
+    return "";
+  });
+
+  const currentValue = value !== undefined ? value : reduxValue;
 
   const handleChange = (e) => {
-    const action = {
-      field: id,
-      value: e.target.value,
-    };
+    const val = e.target.value;
 
-    if (slice === "personal") {
-      dispatch(updatePersonalField(action));
+    if (onChange) {
+      onChange(val); // локальный setState
     } else {
-      dispatch(updateEducationField(action));
+      const payload = { field: id, value: val };
+      if (slice === "personal") dispatch(updatePersonalField(payload));
+      else if (slice === "education") dispatch(updateEducationField(payload));
     }
   };
 
   return (
     <div className="section-input-block">
       <label htmlFor={id} className="section-input-label">
-        {title + " "}
-        {isRequired ? "*" : ""}
+        {title}
+        {isRequired ? " *" : ""}
       </label>
       <input
         type={type}
@@ -45,7 +49,7 @@ export default function SectionInput({
         className="section-input"
         placeholder={placeholder}
         required={isRequired}
-        value={value}
+        value={currentValue}
         onChange={handleChange}
       />
     </div>

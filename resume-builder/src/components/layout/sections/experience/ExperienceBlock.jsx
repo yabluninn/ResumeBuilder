@@ -2,54 +2,62 @@ import SectionInput from "../../../ui/SectionInput";
 import SectionDropdown from "../../../ui/SectionDropdown";
 
 export default function ExperienceBlock({
-  location,
-  setLocation,
+  experience,
+  setExperience,
   locationOptions,
 }) {
+  const handleChange = (field) => (val) => {
+    setExperience({ ...experience, [field]: val });
+  };
+
   return (
     <div className="section-inputs">
       <div className="section-inputs-container">
         <SectionInput
-          id={"job-title"}
-          title={"Job Title"}
-          placeholder={"Enter job title"}
+          id="title"
+          title="Job Title"
+          placeholder="Enter job title"
           isRequired={true}
-          type={"text"}
+          type="text"
+          value={experience.title}
+          onChange={(val) => setExperience({ ...experience, title: val })}
         />
         <SectionInput
-          id={"company"}
-          title={"Company Name"}
-          placeholder={"Enter company name"}
+          id="companyName"
+          title="Company Name"
+          placeholder="Enter company name"
           isRequired={true}
-          type={"text"}
+          type="text"
+          value={experience.companyName}
+          onChange={handleChange("companyName")}
         />
       </div>
       <div className="section-inputs-container">
         <SectionInput
-          id={"start-date"}
-          title={"Start Date"}
-          placeholder={""}
+          id="startDate"
+          title="Start Date"
+          type="date"
           isRequired={true}
-          type={"date"}
+          value={experience.startDate}
+          onChange={handleChange("startDate")}
         />
         <SectionInput
-          id={"end-date"}
-          title={"End Date"}
-          placeholder={""}
+          id="endDate"
+          title="End Date"
+          type="date"
           isRequired={true}
-          type={"date"}
+          value={experience.endDate}
+          onChange={handleChange("endDate")}
         />
         <SectionDropdown
-          title={"Location"}
-          placeholder={"Select location"}
-          value={location}
-          onChange={setLocation}
+          id="location"
+          title="Location"
+          placeholder="Select location"
           options={locationOptions}
+          value={experience.location}
+          onChange={(val) => setExperience({ ...experience, location: val })}
         />
       </div>
-      {/* <div className="exp-block-footer">
-        <button>Remove</button>
-      </div> */}
     </div>
   );
 }
