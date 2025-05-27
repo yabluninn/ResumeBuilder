@@ -1,4 +1,4 @@
-export default function SkillItem({ skill }) {
+export default function SkillItem({ skill, onDelete }) {
   return (
     <div className="skill-item">
       <div className="skill-item-info">
@@ -8,7 +8,7 @@ export default function SkillItem({ skill }) {
           <p>{skill.level}</p>
         </div>
       </div>
-      <button className="exp-remove-button">
+      <button className="exp-remove-button" onClick={onDelete}>
         <i className="fa-solid fa-trash-can"></i>
       </button>
     </div>
