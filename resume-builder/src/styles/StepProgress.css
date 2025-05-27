@@ -63,3 +63,8 @@
   background-color: var(--main-color);
   height: 100%;
 }
+
+.completed-step {
+  border: 2px solid var(--main-color);
+  border-radius: 8px;
+}

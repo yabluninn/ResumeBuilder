@@ -20,6 +20,7 @@ export default function StepProgress({ currentStep }) {
         <StepBlock
           key={step.title}
           isCurrent={index === currentStep}
+          isCompleted={index < currentStep}
           title={step.title}
           icon={step.icon}
         />
