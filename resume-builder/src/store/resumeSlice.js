@@ -19,10 +19,10 @@ const initialState = {
   },
   experience: [],
   skills: [],
-  additions: {
+  additionalInfo: {
     languages: [],
     certificates: [],
-    hobbies: [],
+    hobbies: "",
   },
 };
 
@@ -54,6 +54,21 @@ const resumeSlice = createSlice({
         state.skills.splice(index, 1);
       }
     },
+    addLanguage(state, action) {
+      state.additionalInfo.languages.push(action.payload);
+    },
+    removeLanguage(state, action) {
+      state.additionalInfo.languages.splice(action.payload, 1);
+    },
+    addCertificate(state, action) {
+      state.additionalInfo.certificates.push(action.payload);
+    },
+    removeCertificate(state, action) {
+      state.additionalInfo.certificates.splice(action.payload, 1);
+    },
+    setHobbies(state, action) {
+      state.additionalInfo.hobbies = action.payload;
+    },
   },
 });
 
@@ -64,5 +79,10 @@ export const {
   removeExperience,
   addSkill,
   removeSkill,
+  addLanguage,
+  removeLanguage,
+  addCertificate,
+  removeCertificate,
+  setHobbies,
 } = resumeSlice.actions;
 export default resumeSlice.reducer;

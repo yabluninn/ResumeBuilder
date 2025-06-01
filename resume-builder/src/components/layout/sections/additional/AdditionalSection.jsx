@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SectionHeader from "../../../ui/SectionHeader";
 import SectionDropdown from "../../../ui/SectionDropdown";
 import SectionInput from "../../../ui/SectionInput";
@@ -7,19 +8,60 @@ import LanguageItem from "./LanguageItem";
 import SectionItem from "../SectionItem";
 import CertificateItem from "./CertificateItem";
 
-export default function AdditionalSection() {
-  const [languageLevel, setLanguageLevel] = useState("");
-  const [certificateEndDate, setCertificateEnd] = useState("");
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addLanguage,
+  removeLanguage,
+  addCertificate,
+  removeCertificate,
+  setHobbies,
+} from "../../../../store/resumeSlice";
+
+export default function AdditionalSection({ onBack, onNext }) {
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const { languages, certificates, hobbies } = useSelector(
+    (state) => state.resume.additionalInfo
+  );
+
+  const [newLanguage, setNewLanguage] = useState({ name: "", level: "" });
+  const [newCertificate, setNewCertificate] = useState({
+    name: "",
+    provider: "",
+    year: "",
+  });
+
+  const handleAddLanguage = () => {
+    const { name, level } = newLanguage;
+    if (!name.trim() || !level) {
+      alert("Please fill in language and level");
+      return;
+    }
+    dispatch(addLanguage(newLanguage));
+    setNewLanguage({ name: "", level: "" });
+  };
+
+  const handleAddCertificate = () => {
+    const { name, provider, year } = newCertificate;
+    if (!name.trim() || !provider.trim() || !year) {
+      alert("Please fill in all certificate fields");
+      return;
+    }
+    dispatch(addCertificate(newCertificate));
+    setNewCertificate({ name: "", provider: "", year: "" });
+  };
 
   const languageOptions = [
-    { value: "beginner", label: "Beginner" },
-    { value: "elementary", label: "Elementary" },
-    { value: "pre-intermediate", label: "Pre-Intermediate" },
-    { value: "intermediate", label: "Intermediate" },
-    { value: "upper-intermediate", label: "Upper Intermediate" },
-    { value: "advanced", label: "Advanced" },
-    { value: "fluent", label: "Fluent" },
-    { value: "native", label: "Native" },
+    { value: "Beginner", label: "Beginner" },
+    { value: "Elementary", label: "Elementary" },
+    { value: "Pre-Intermediate", label: "Pre-Intermediate" },
+    { value: "Intermediate", label: "Intermediate" },
+    { value: "Upper-Intermediate", label: "Upper Intermediate" },
+    { value: "Advanced", label: "Advanced" },
+    { value: "Fluent", label: "Fluent" },
+    { value: "Native", label: "Native" },
   ];
 
   const years = [
@@ -41,70 +83,89 @@ export default function AdditionalSection() {
       <SectionHeader title={"Additional"} />
       <SectionItem title="Languages">
         <div className="skills-list">
-          <LanguageItem
-            language={{
-              name: "English",
-              level: "Pre-Intermediate",
-            }}
-          />
+          {languages.map((lang, index) => (
+            <LanguageItem
+              key={index}
+              language={lang}
+              onDelete={() => dispatch(removeLanguage(index))}
+            />
+          ))}
         </div>
         <div className="section-inputs">
           <div className="section-inputs-container">
             <SectionInput
-              id={"name"}
-              title={"Language"}
-              placeholder={"Enter language"}
+              id="language"
+              title="Language"
+              placeholder="Enter language"
               isRequired={true}
-              type={"text"}
+              type="text"
+              value={newLanguage.name}
+              onChange={(val) => setNewLanguage({ ...newLanguage, name: val })}
             />
             <SectionDropdown
-              title={"Language Level"}
-              placeholder={"Select language level"}
-              value={languageLevel}
-              onChange={setLanguageLevel}
+              title="Language Level"
+              placeholder="Select language level"
+              value={newLanguage.level}
+              onChange={(val) => setNewLanguage({ ...newLanguage, level: val })}
               options={languageOptions}
             />
           </div>
-          <button className="add-new-exp-button">Add New Language</button>
+          <button className="add-new-exp-button" onClick={handleAddLanguage}>
+            Add New Language
+          </button>
         </div>
       </SectionItem>
+
       <SectionItem title="Certificates">
         <div className="skills-list">
-          <CertificateItem
-            certificate={{
-              name: "Meta Frontend Developer",
-              provider: "Coursera",
-              year: "2024",
-            }}
-          />
+          {certificates.map((cert, index) => (
+            <CertificateItem
+              key={index}
+              certificate={cert}
+              onDelete={() => dispatch(removeCertificate(index))}
+            />
+          ))}
         </div>
         <div className="section-inputs">
           <div className="section-inputs-container">
             <SectionInput
-              id={"name"}
-              title={"Certificate Name"}
-              placeholder={"Enter certificate name"}
+              id="certificateName"
+              title="Certificate Name"
+              placeholder="Enter certificate name"
               isRequired={true}
-              type={"text"}
+              type="text"
+              value={newCertificate.name}
+              onChange={(val) =>
+                setNewCertificate({ ...newCertificate, name: val })
+              }
             />
             <SectionInput
-              id={"name"}
-              title={"Company Provider"}
-              placeholder={"Enter provider name"}
+              id="company"
+              title="Company Provider"
+              placeholder="Enter provider name"
               isRequired={true}
-              type={"text"}
+              type="text"
+              value={newCertificate.provider}
+              onChange={(val) =>
+                setNewCertificate({ ...newCertificate, provider: val })
+              }
             />
             <SectionDropdown
-              title={"End Year"}
-              placeholder={"Select end year"}
-              value={certificateEndDate}
-              onChange={setCertificateEnd}
+              title="End Year"
+              placeholder="Select end year"
+              value={newCertificate.year}
+              onChange={(val) =>
+                setNewCertificate({ ...newCertificate, year: val })
+              }
               options={years}
             />
           </div>
-          <button className="add-new-exp-button">Add New Certificate</button>
+          <button className="add-new-exp-button" onClick={handleAddCertificate}>
+            Add New Certificate
+          </button>
         </div>
       </SectionItem>
+
       <SectionItem title="Hobbies">
         <div className="section-inputs">
           <SectionTextarea
@@ -112,15 +173,21 @@ export default function AdditionalSection() {
             title="Write something about your hobbies"
             placeholder="My hobbies are..."
             isRequired={false}
+            value={hobbies}
+            onChange={(val) => dispatch(setHobbies(val))}
           />
         </div>
       </SectionItem>
+
       <div className="section-buttons">
-        <button className="section-button back-button">
+        <button className="section-button back-button" onClick={onBack}>
           <i class="fa-solid fa-chevron-left"></i>
           Back
         </button>
-        <button className="section-button next-button">
+        <button
+          className="section-button next-button"
+          onClick={() => navigate("/generate")}
+        >
           Next Step
           <i class="fa-solid fa-chevron-right"></i>
         </button>
