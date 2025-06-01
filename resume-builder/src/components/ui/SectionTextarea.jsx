@@ -4,11 +4,13 @@ export default function SectionTextarea({
   placeholder,
   isRequired,
   rows = 4,
+  value,
+  onChange,
 }) {
   return (
     <div className="section-input-block">
       <label htmlFor={id} className="section-input-label">
-        {title + " "}
+        {title}
         {isRequired ? " *" : ""}
       </label>
       <textarea
@@ -18,7 +20,9 @@ export default function SectionTextarea({
         placeholder={placeholder}
         rows={rows}
         required={isRequired}
-      ></textarea>
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
     </div>
   );
 }

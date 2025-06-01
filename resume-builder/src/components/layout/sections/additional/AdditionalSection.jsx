@@ -17,7 +17,7 @@ import {
   setHobbies,
 } from "../../../../store/resumeSlice";
 
-export default function AdditionalSection({ onBack, onNext }) {
+export default function AdditionalSection({ onBack }) {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
