@@ -27,7 +27,7 @@
 | Frontend    | React, Vite              |
 | State Mgmt  | Redux Toolkit + React-Redux |
 | Styling     | Tailwind CSS (or custom CSS) |
-| PDF Export  | @react-pdf/renderer      |
+| PDF Export  | @html2pdf      |
 | Storage     | localStorage             |
 
 ---
@@ -85,7 +85,7 @@ App will run at: `http://localhost:5173`
 
 - 🔄 **Redux-Powered Form Inputs** — Each section is tied to a centralized state for maximum control and scalability
 - 🧠 **Validation on each step** — Prevents incomplete data submission
-- 🧾 **PDF Export** — Uses `@react-pdf/renderer` to export a live preview into a clean PDF
+- 🧾 **PDF Export** — Uses `@html2pdf` to export a live preview into a clean PDF
 - ♻️ **Local autosave** — All data is stored in `localStorage` while editing
 
 ---
@@ -94,8 +94,8 @@ App will run at: `http://localhost:5173`
 
 - [x] Multi-step resume creation form  
 - [x] Redux integration  
-- [ ] Live preview structure  
-- [ ] PDF export via `@react-pdf/renderer`  
+- [x] Live preview structure  
+- [x] PDF export via `@html2pdf`  
 - [ ] Multiple resume templates  
 - [ ] Save/export/share profiles  
 - [ ] Resume theme customization  
