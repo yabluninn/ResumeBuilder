@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import html2pdf from "html2pdf.js";
 import "../../styles/GeneratePage.css";
 
 export default function GeneratePage() {
@@ -15,13 +16,21 @@ export default function GeneratePage() {
   } = resume.additionalInfo || {};
 
   const handleExportPDF = () => {
-    // заглушка
-    alert("PDF export coming soon!");
+    const element = document.getElementById("resume-content");
+    const opt = {
+      margin: 0.5,
+      filename: `${personal.name}_${personal.surname}_resume.pdf`,
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    };
+
+    html2pdf().set(opt).from(element).save();
   };
 
   return (
     <div className="generate-container">
-      <div className="resume-preview">
+      <div id="resume-content" className="resume-preview">
         <h1 className="resume-name">
           {personal.name} {personal.surname}
         </h1>
